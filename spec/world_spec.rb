@@ -76,5 +76,11 @@ RSpec.describe World do
         end
       end
     end
+
+    describe '#live_neighbour_count' do
+      it 'returns the number of live neighbours for a given cell' do
+        expect(subject.live_neighbour_count(1,0)).to eq 2
+      end
+    end
   end
 end

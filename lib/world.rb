@@ -48,6 +48,12 @@ class World
     ]
   end
 
+  def live_neighbour_count(row, col)
+    neighbours_of(row, col).each_with_object([]) do |coords, live_cell_coords|
+      live_cell_coords << coords if alive_at?(coords)
+    end.count
+  end
+
   def animate_cell(row, col)
     @cells[row][col] = ''
   end
@@ -60,6 +66,11 @@ class World
     seed_indices.each do |row, col|
       @cells[row][col] = ''
     end
+  end
+
+  def alive_at?(coords)
+    cell = @cells[coords.first][coords.last]
+    alive?(cell)
   end
 
   def alive?(cell)
