@@ -15,5 +15,35 @@ RSpec.describe World do
         expect(subject.dead_cells).to eq [1,2,4,5,7,8]
       end
     end
+
+    describe '#kill_cell' do
+
+      before do
+        subject.kill_cell(0)
+      end
+
+      it 'one fewer cells are alive' do
+        expect(subject.live_cells).to eq [3,6]
+      end
+
+      it 'one more cell is dead' do
+        expect(subject.dead_cells).to eq [0,1,2,4,5,7,8]
+      end
+    end
+
+    describe '#animate_cell' do
+
+      before do
+        subject.animate_cell(1)
+      end
+
+      it 'one more cell is alive' do
+        expect(subject.live_cells).to eq [0,1,3,6]
+      end
+
+      it 'one fewer cells are dead' do
+        expect(subject.dead_cells).to eq [2,4,5,7,8]
+      end
+    end
   end
 end

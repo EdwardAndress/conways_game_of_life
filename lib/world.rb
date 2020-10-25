@@ -17,6 +17,14 @@ class World
     end.compact
   end
 
+  def animate_cell(index)
+    @cells[index] = ''
+  end
+
+  def kill_cell(index)
+    @cells[index] = '•'
+  end
+
   def add_seeds(seed_indices)
     seed_indices.each do |seed_index|
       @cells[seed_index] = ''
