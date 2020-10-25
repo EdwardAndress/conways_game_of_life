@@ -19,7 +19,6 @@ RSpec.describe World do
     end
 
     describe '#kill_cell' do
-
       before do
         subject.kill_cell(0,0)
       end
@@ -35,7 +34,6 @@ RSpec.describe World do
     end
 
     describe '#animate_cell' do
-
       before do
         subject.animate_cell(0,1)
       end
@@ -46,6 +44,36 @@ RSpec.describe World do
 
       it 'one fewer cells are dead' do
         expect(subject.dead_cells).to eq [[0, 2], [1, 1], [1, 2], [2, 1], [2, 2]]
+      end
+    end
+
+    describe '#neighbours_of' do
+      context 'for a cell on the left edge' do
+        it 'returns all neighbours, wrapping to the right edge' do
+          expect(subject.neighbours_of(1,0))
+          .to contain_exactly [0,-1], [0,0], [0,1], [1,-1], [1,1], [2,-1], [2,0], [2,1]
+        end
+      end
+      
+      context 'for a cell on the right edge' do
+        it 'returns all neighbours, wrapping to the left edge' do
+          expect(subject.neighbours_of(1,2))
+          .to contain_exactly [0,0], [0,1], [0,2], [1,0], [1,1], [2,0], [2,1], [2, 2]
+        end
+      end
+
+      context 'for a cell in the bottom row' do
+        it 'returns all neighbours, wrapping to the top row' do
+          expect(subject.neighbours_of(2,1))
+            .to contain_exactly [1,0], [1,1], [1,2], [2,0], [2,2], [0,0], [0,1], [0,2]
+        end
+      end
+
+      context 'for a cell on the top row' do
+        it 'returns all neighbours, wrapping to the bottom row' do
+          expect(subject.neighbours_of(0,1))
+            .to contain_exactly [-1,0], [-1, 1], [-1, 2], [0,0], [0,2], [1,0], [1,1], [1,2]
+        end
       end
     end
   end

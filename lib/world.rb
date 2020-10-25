@@ -5,13 +5,15 @@
 class World
 
   def initialize(width, height, seed_indices = [])
-    @cells = create_cells(width, height)
+    @height = height
+    @width = width
+    @cells = create_cells
     add_seeds(seed_indices) if seed_indices.any?
   end
 
-  def create_cells(width, height)
-    (1..height).map do
-      (1..width).map do
+  def create_cells
+    (1..@height).map do
+      (1..@width).map do
         '•'
       end
     end
@@ -31,6 +33,19 @@ class World
         [row_index, col_index] if dead?(cell)
       end.compact
     end.compact.flatten(1)
+  end
+
+  def neighbours_of(row, col)
+    [
+      [row - 1, col - 1],
+      [row - 1, col],
+      [row - 1, (col + 1) % @width],
+      [row, col - 1],
+      [row, (col + 1) % @width],
+      [(row + 1) % @height, col - 1],
+      [(row + 1) % @height, col],
+      [(row + 1) % @height, (col + 1) % @width]
+    ]
   end
 
   def animate_cell(row, col)
