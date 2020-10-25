@@ -1,9 +1,9 @@
 # the world doesn't decide who lives or dies
 # but it knows who is alive and who is dead
 # and it can carry out the deeds of a higher power
+# to kill and animate as required
 
 class World
-
   def initialize(width, height, seed_indices = [])
     @height = height
     @width = width
