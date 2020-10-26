@@ -4,6 +4,9 @@
 # to kill and animate as required
 
 class World
+
+  attr_reader :cells 
+
   def initialize(width, height, seed_indices = [])
     @height = height
     @width = width
@@ -55,7 +58,7 @@ class World
   end
 
   def animate_cell(row, col)
-    @cells[row][col] = ''
+    @cells[row][col] = 'O'
   end
 
   def kill_cell(row, col)
@@ -64,7 +67,7 @@ class World
 
   def add_seeds(seed_indices)
     seed_indices.each do |row, col|
-      @cells[row][col] = ''
+      @cells[row][col] = 'O'
     end
   end
 
@@ -74,7 +77,7 @@ class World
   end
 
   def alive?(cell)
-    cell == ''
+    cell == 'O'
   end
 
   def dead?(cell)
