@@ -1,10 +1,10 @@
 class Rule
-  def self.apply_to(old_world, new_world)
-    self.new(old_world, new_world).apply
+  def self.apply_to(world, next_gen)
+    self.new(world, next_gen).apply
   end
 
-  def initialize(old_world, new_world)
-    @old_world = old_world
-    @new_world = new_world
+  def initialize(world, next_gen)
+    @world = world
+    @next_gen = next_gen
   end
 end

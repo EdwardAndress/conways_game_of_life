@@ -1,13 +1,6 @@
-class UnderpopulationRule
-  def self.apply_to(world, next_gen)
-    self.new(world, next_gen).apply
-  end
+require_relative './rule'
 
-  def initialize(world, next_gen)
-    @world = world
-    @next_gen = next_gen
-  end
-
+class UnderpopulationRule < Rule
   def apply
     @world.live_cells.each do |row, col|
       @next_gen.kill_cell(row, col) if
