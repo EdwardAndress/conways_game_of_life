@@ -24,7 +24,6 @@ class GameRunner
     generations.times do |count|
       display_world
       @clock.tick(@world)
-      sleep 0.5
       clear_screen
     end
   end
