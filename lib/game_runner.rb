@@ -3,6 +3,7 @@ require_relative 'clock'
 require_relative 'overpopulation_rule'
 require_relative 'underpopulation_rule'
 require_relative 'reproduction_rule'
+require_relative 'preservation_rule'
 
 class GameRunner
   def initialize(world:, clock:)
@@ -23,7 +24,7 @@ class GameRunner
   def run(generations)
     generations.times do |count|
       display_world
-      @clock.tick(@world)
+      @world = @clock.tick(@world)
       clear_screen
     end
   end

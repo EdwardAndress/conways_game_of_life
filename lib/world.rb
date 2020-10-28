@@ -17,6 +17,10 @@ class World
     add_seeds(seed_indices) if seed_indices.any?
   end
 
+  def next_generation
+    World.new(@width, @height)
+  end
+
   def create_cells
     (1..@height).map do
       (1..@width).map do

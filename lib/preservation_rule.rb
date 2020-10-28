@@ -1,4 +1,4 @@
-class OverpopulationRule
+class PreservationRule
   def self.apply_to(world, next_gen)
     self.new(world, next_gen).apply
   end
@@ -10,7 +10,9 @@ class OverpopulationRule
 
   def apply
     @world.live_cells.each do |row, col|
-      @next_gen.kill_cell(row, col) if @world.live_neighbour_count(row, col) > 3
+      @next_gen.animate_cell(row, col) if
+        @world.live_neighbour_count(row, col) == 3 ||
+        @world.live_neighbour_count(row, col) == 2
     end
   end
 end

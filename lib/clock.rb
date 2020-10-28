@@ -5,8 +5,8 @@ class Clock
 
   def tick(world)
     sleep 0.5
-    @rules.each do |rule|
-      rule.apply_to(world)
+    @rules.each_with_object(world.next_generation) do |rule, next_gen|
+      rule.apply_to(world, next_gen)
     end
   end
 end
