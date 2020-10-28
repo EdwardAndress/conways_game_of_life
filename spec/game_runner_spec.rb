@@ -1,8 +1,8 @@
-require 'interface'
+require 'game_runner'
 
-describe Interface do
+describe GameRunner do
 
-  let(:cells) { [['•','•','•'],['•','•','•'],['•','•','•']] }
+  let(:cells) { [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']] }
   let(:world) { double :world, cells: cells }
   let(:clock) { double :clock }
   subject { described_class.new(world: world, clock: clock)}

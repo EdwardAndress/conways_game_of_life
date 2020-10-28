@@ -1,4 +1,4 @@
-require_relative './interface'
+require_relative './game_runner'
 
 WIDTH = 50
 HEIGHT = 50
@@ -13,5 +13,5 @@ end
 world = World.new(WIDTH, HEIGHT, seeds)
 rules = [ReproductionRule, OverpopulationRule, UnderpopulationRule]
 clock = Clock.new(rules)
-interface = Interface.new(world: world, clock: clock)
-interface.run(GENERATIONS)
+game_runner = GameRunner.new(world: world, clock: clock)
+game_runner.run(GENERATIONS)

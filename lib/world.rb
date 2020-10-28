@@ -5,6 +5,9 @@
 
 class World
 
+  DEAD_CELL = ' '
+  LIVE_CELL = '*'
+
   attr_reader :cells 
 
   def initialize(width, height, seed_indices = [])
@@ -17,7 +20,7 @@ class World
   def create_cells
     (1..@height).map do
       (1..@width).map do
-        '•'
+        DEAD_CELL
       end
     end
   end
@@ -58,16 +61,16 @@ class World
   end
 
   def animate_cell(row, col)
-    @cells[row][col] = 'O'
+    @cells[row][col] = LIVE_CELL
   end
 
   def kill_cell(row, col)
-    @cells[row][col] = '•'
+    @cells[row][col] = DEAD_CELL
   end
 
   def add_seeds(seed_indices)
     seed_indices.each do |row, col|
-      @cells[row][col] = 'O'
+      @cells[row][col] = LIVE_CELL
     end
   end
 
@@ -77,10 +80,10 @@ class World
   end
 
   def alive?(cell)
-    cell == 'O'
+    cell == LIVE_CELL
   end
 
   def dead?(cell)
-    cell == '•'
+    cell == DEAD_CELL
   end
 end

@@ -4,7 +4,7 @@ require_relative 'overpopulation_rule'
 require_relative 'underpopulation_rule'
 require_relative 'reproduction_rule'
 
-class Interface
+class GameRunner
   def initialize(world:, clock:)
     @world = world
     @clock = clock
@@ -21,10 +21,10 @@ class Interface
   end
 
   def run(generations)
-    generations.times do
+    generations.times do |count|
       display_world
       @clock.tick(@world)
-      sleep 0.1
+      sleep 0.5
       clear_screen
     end
   end
