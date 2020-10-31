@@ -10,13 +10,6 @@ seeds = []
   seeds << [rand(HEIGHT - 1), rand(WIDTH - 1)]
 end
 
-world = World.new(WIDTH, HEIGHT, seeds)
-rules = [
-  ReproductionRule,
-  OverpopulationRule,
-  UnderpopulationRule,
-  PreservationRule
-]
-clock = Clock.new(rules)
-game_runner = GameRunner.new(world: world, clock: clock)
-game_runner.run(GENERATIONS)
+world = World.new(seeds: seeds)
+game_runner = GameRunner.new(world: world)
+game_runner.run

@@ -3,7 +3,7 @@ require 'world'
 RSpec.describe World do
   context 'when the first cell of every row in a 3 x 3 grid is alive' do
     let(:seeds) { [[0,0], [1,0], [2,0]] }
-    subject { described_class.new(3, 3, seeds) }
+    subject { described_class.new(width: 3, height: 3, seeds: seeds) }
     
     describe '#live_cells' do
       it 'returns the coordinates of all the live cells in the world' do

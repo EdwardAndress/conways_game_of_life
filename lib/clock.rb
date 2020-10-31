@@ -1,5 +1,18 @@
+require_relative './underpopulation_rule.rb'
+require_relative './overpopulation_rule.rb'
+require_relative './reproduction_rule.rb'
+require_relative './preservation_rule.rb'
+
 class Clock
-  def initialize(rules)
+
+  DEFAULT_RULES = [
+    UnderpopulationRule,
+    OverpopulationRule,
+    ReproductionRule,
+    PreservationRule
+  ]
+
+  def initialize(rules = DEFAULT_RULES)
     @rules = rules
   end
 

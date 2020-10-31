@@ -6,7 +6,10 @@ require_relative 'reproduction_rule'
 require_relative 'preservation_rule'
 
 class GameRunner
-  def initialize(world:, clock:)
+
+  DEFAULT_GENERATIONS = 100
+
+  def initialize(world:, clock: Clock.new)
     @world = world
     @clock = clock
   end
@@ -21,7 +24,7 @@ class GameRunner
     system 'clear'
   end
 
-  def run(generations)
+  def run(generations = DEFAULT_GENERATIONS)
     generations.times do |count|
       display_world
       @world = @clock.tick(@world)

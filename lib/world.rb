@@ -7,18 +7,20 @@ class World
 
   DEAD_CELL = ' '
   LIVE_CELL = '*'
+  HEIGHT = 50
+  WIDTH = 100
 
   attr_reader :cells 
 
-  def initialize(width, height, seed_indices = [])
+  def initialize(width: WIDTH, height: HEIGHT, seeds: [])
     @height = height
     @width = width
     @cells = create_cells
-    add_seeds(seed_indices) if seed_indices.any?
+    add_seeds(seeds) if seeds.any?
   end
 
   def next_generation
-    World.new(@width, @height)
+    World.new
   end
 
   def create_cells
