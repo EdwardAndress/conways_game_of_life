@@ -3,10 +3,12 @@
 # and it can carry out the deeds of a higher power
 # to kill and animate as required
 
+require 'colorize'
+
 class World
 
-  DEAD_CELL = ' '
-  LIVE_CELL = '*'
+  DEAD_CELL = " "
+  LIVE_CELL = "\u25A2".white
   HEIGHT = 50
   WIDTH = 100
 
@@ -20,7 +22,7 @@ class World
   end
 
   def next_generation
-    World.new
+    World.new(height: @height, width: @width)
   end
 
   def create_cells
